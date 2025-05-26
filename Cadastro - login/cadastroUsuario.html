@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Font Awesome (ícones) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <title>Cadastro - Nome Projeto</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <header>
+        <div class="logo">Nome Projeto</div>
+    
+        <nav>
+          <a href="#">Home</a>
+          <a href="#">Categorias ▼</a>
+        </nav>
+    
+        <div class="header-right">
+          <input type="text" class="search-input" placeholder="Pesquisar..." />
+          <button class="user-btn" id="userBtn" title="Perfil">
+            <i class="fa-solid fa-user"></i>
+          </button>
+        </div>
+      </header>
+      
+      
+
+<div class="form-container">
+  <h2>Cadastro</h2>
+  <p>Visitante</p>
+  <form id="cadastroForm" novalidate>
+    <div>
+      <label for="nome">Nome completo <br></label>
+      <input type="text" id="nome" name="nome" required />
+      <div class="error" id="erroNome"></div>
+    </div>
+    <div>
+      <label for="email">E-mail<br></label>
+      <input type="email" id="email" name="email" required />
+      <div class="error" id="erroEmail"></div>
+    </div>
+    <div>
+      <label for="contato">Contato<br></label>
+      <input type="text" id="contato" name="contato" required />
+      <div class="error" id="erroContato"></div>
+    </div>
+    <div>
+      <label for="senha">Senha<br></label>
+      <input type="password" id="senha" name="senha" required minlength="6" />
+      <div class="error" id="erroSenha"></div>
+    </div>
+    <button type="submit">Cadastrar</button>
+  </form>
+  <a href="login.html">Voltar para área de login</a>
+  <a href="cadastroEntidade.html">Cadastrar como entidade</a>
+</div>
+
+<script>
+  const form = document.getElementById("cadastroForm");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // impede o envio automático
+    let valid = true;
+
+    // Limpa erros anteriores
+    document.querySelectorAll(".error").forEach(el => el.textContent = "");
+
+    const nome = document.getElementById("nome");
+    const email = document.getElementById("email");
+    const contato = document.getElementById("contato");
+    const senha = document.getElementById("senha");
+
+    // Validações simples
+    if (nome.value.trim() === "") {
+      document.getElementById("erroNome").textContent = "Informe o nome.";
+      valid = false;
+    }
+
+    if (!email.value.includes("@")) {
+      document.getElementById("erroEmail").textContent = "E-mail inválido.";
+      valid = false;
+    }
+
+    if (contato.value.trim() === "") {
+      document.getElementById("erroContato").textContent = "Informe o contato.";
+      valid = false;
+    }
+
+    if (senha.value.length < 6) {
+      document.getElementById("erroSenha").textContent = "Senha deve ter no mínimo 6 caracteres.";
+      valid = false;
+    }
+
+    if (valid) {
+      alert("Cadastro válido! (aqui você pode chamar o backend)");
+      // Aqui você pode usar fetch(), axios ou redirecionar
+    }
+  });
+</script>
+
+</body>
+</html>

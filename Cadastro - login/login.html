@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Nome Projeto</title>
+
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <header>
+    <div class="logo">Nome Projeto</div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Categorias ▼</a>
+    </nav>
+
+    <div class="header-right">
+      <input type="text" class="search-input" placeholder="Pesquisar..." />
+      <button class="user-btn" id="userBtn" title="Perfil">
+        <i class="fa-solid fa-user"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="left-side-text">
+      NOME DO PROJETO
+    </div>
+
+    <div class="login-box">
+      <h2>Login</h2>
+
+      <form>
+        <label for="usuario">Usuário</label>
+        <input type="text" id="usuario" name="usuario" required />
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required />
+
+        <div class="checkbox-container">
+          <label><input type="checkbox" /> Lembrar dessa conta?</label>
+          <a href="cadastroUsuario.html">Cadastrar</a>
+        </div>
