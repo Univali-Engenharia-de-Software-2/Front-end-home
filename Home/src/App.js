@@ -1,12 +1,15 @@
 import React from "react";
-import Navbar from "./components/navbar";
-import MainContainer from "./components/mainContainer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PaginaPrincipal from "./components/paginaPrincipal";
+import SaibaMais from "./components/saibaMais";
 
 export default function App() {
   return (
-    <div>
-      <Navbar />
-      <MainContainer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<PaginaPrincipal />} />
+        <Route path="/saiba-mais" element={<SaibaMais />} />
+      </Routes>
+    </Router>
   );
 }

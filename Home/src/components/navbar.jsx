@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -14,18 +15,21 @@ export default function Navbar() {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <a className="navbar-brand" href="#">
+
+      <Link className="navbar-brand" to="/">
         Entre Tradições
-      </a>
-      <a className="login-icon mx-2 d-lg-none" href="#" title="Login">
+      </Link>
+
+      <Link className="login-icon mx-2 d-lg-none" to="/login" title="Login">
         <i className="fas fa-user"></i>
-      </a>
+      </Link>
+
       <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item active">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" to="/saiba-mais">
               Saiba mais
-            </a>
+            </Link>
           </li>
           <li className="nav-item dropdown">
             <a
@@ -43,23 +47,24 @@ export default function Navbar() {
               aria-labelledby="navbarDropdownMenuLink"
             >
               <li>
-                <a className="dropdown-item" href="#">
-                  categoria 1
-                </a>
+                <Link className="dropdown-item" to="/categoria/1">
+                  Categoria 1
+                </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
-                  categoria 2
-                </a>
+                <Link className="dropdown-item" to="/categoria/2">
+                  Categoria 2
+                </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
-                  categoria 3
-                </a>
+                <Link className="dropdown-item" to="/categoria/3">
+                  Categoria 3
+                </Link>
               </li>
             </ul>
           </li>
         </ul>
+
         <form className="barraPesquisa d-flex">
           <input
             className="form-control me-2"
@@ -71,9 +76,14 @@ export default function Navbar() {
             <i className="fas fa-search"></i>
           </button>
         </form>
-        <a className="login-icon ml-3 d-none d-lg-flex" href="#" title="Login">
+
+        <Link
+          className="login-icon ml-3 d-none d-lg-flex"
+          to="/login"
+          title="Login"
+        >
           <i className="fas fa-user"></i>
-        </a>
+        </Link>
       </div>
     </nav>
   );
