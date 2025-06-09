@@ -8,14 +8,24 @@ function CadastroEntidade() {
     email: '',
     contato: '',
     senha: '',
-    cpf: ''
+    cpf: '',
+    endereco: '',        // novo campo
+    fotoPerfil: null     // novo campo
   });
+  
 
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
+  const handleFotoChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, fotoPerfil: file });
+  };
+  
+  
 
   const validarFormulario = () => {
     const novosErros = {};
@@ -48,6 +58,14 @@ function CadastroEntidade() {
       novosErros.cpf = 'CPF ou CNPJ inválido.';
       valid = false;
     }
+
+    if (!formData.endereco.trim()) {
+      novosErros.endereco = 'Informe o endereço.';
+      valid = false;
+    }
+    
+    
+    
 
     setErrors(novosErros);
     return valid;
@@ -83,6 +101,17 @@ function CadastroEntidade() {
         <h2>Cadastro</h2>
         <p>Entidade</p>
         <form id="formCadastroEntidade" onSubmit={handleSubmit} noValidate>
+        <div>
+      <label htmlFor="fotoPerfil">Foto de Perfil<br /></label>
+      <input
+        type="file"
+        id="fotoPerfil"
+        name="fotoPerfil"
+       accept="image/*"
+        onChange={handleFotoChange}
+      />
+  <div className="error">{errors.fotoPerfil}</div>
+</div>
           <div>
             <label htmlFor="nome">Nome da entidade<br /></label>
             <input
@@ -147,6 +176,19 @@ function CadastroEntidade() {
             />
             <div className="error">{errors.cpf}</div>
           </div>
+          <div>
+  <label htmlFor="endereco">Endereço<br /></label>
+  <input
+    type="text"
+    id="endereco"
+    name="endereco"
+    value={formData.endereco}
+    onChange={handleChange}
+    required
+  />
+  <div className="error">{errors.endereco}</div>
+</div>
+          
 
           <button type="submit">Cadastrar</button>
         </form>
